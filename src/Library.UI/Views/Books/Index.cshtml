@@ -1,0 +1,41 @@
+﻿@using Library.Application.Dto
+@model List<BookDto>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="row">
+    <a class="btn btn-primary" asp-action="Create">Create new book</a>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>opt</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Category</th>
+                    <th>Publish Year</th>
+                    <th>CreatedDate</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if(Model!=null){
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>
+                                <a href="/Books/Delete?id=@item.Id" onclick="return confirm('Are you sure to delete this data?')">Delete</a>
+                                <a href="/Books/Edit?id=@item.Id" >Edit</a>
+                            </td>
+                            <td>@item.Title</td>
+                            <td>@item.Author</td>
+                            <td>@item.BookCategory</td>
+                            <td>@item.PublishYear</td>
+                            <td>@item.CreatedDate</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

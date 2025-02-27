@@ -1,0 +1,66 @@
+﻿@using Library.Application.Dto
+@model SearchViewModel
+@{
+	ViewData["Title"] = "Home Page";
+}
+<div class="row">
+	<div class="card">
+		<div class="card-body">
+			<form action="/" method="get" enctype="multipart/form-data">
+				<div class="row">
+					<div class="col-lg-3 col-md-4 col-sm-6">
+						<label asp-for="Title"></label>
+						<input asp-for="Title" class="form-control" />
+					</div>
+					<div class="col-lg-3 col-md-4 col-sm-6">
+						<label asp-for="PublishYear"></label>
+						<input asp-for="PublishYear" class="form-control" />
+					</div>
+					<div class="col-lg-3 col-md-4 col-sm-6">
+						<label asp-for="Author"></label>
+						<input asp-for="Author" class="form-control" />
+					</div>
+					<div class="col-lg-3 col-md-4 col-sm-6">
+						<label asp-for="Category"></label>
+						<input asp-for="Category" class="form-control" />
+					</div>
+					<div class="col-lg-3 col-md-4 col-sm-6">
+						<label for="btn-search">&nbsp;</label>
+						<button id="btn-search" class="btn btn-primary form-control">
+							Search
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Category</th>
+					<th>Publish Year</th>
+					<th>CreatedDate</th>
+				</tr>
+			</thead>
+			<tbody>
+				@if (Model != null && Model.Books!=null)
+				{
+					@foreach (var item in Model.Books)
+					{
+
+						<tr>
+							<td>@item.Title</td>
+							<td>@item.Author</td>
+							<td>@item.BookCategory</td>
+							<td>@item.PublishYear</td>
+							<td>@item.CreatedDate</td>
+						</tr>
+					}
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,53 @@
+﻿@model SignUpViewModel
+@{
+    ViewData["Title"] = "Sign up";
+}
+<h1>@ViewData["Title"]</h1>
+<main class="form-data">
+    @if (ViewBag.IsSuccess!=null && ViewBag.IsSuccess)
+    {
+        <h5 class="h5 mb-3 fw-normal text-success">Added Successfully!</h5>
+        <h5 class="h5 mb-3 fw-normal"><a href="/Account/Login" >Click here</a> to login.</h5>
+    }
+    else
+    {
+        <form method="post">
+            <span class="text-danger" asp-validation-summary="All"></span>
+
+            <img class="mb-4" src="/logo.webp" alt="RaiDana Logo">
+            <h1 class="h3 mb-3 fw-normal">Sign up</h1>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" asp-for="UserName" id="floatingInput" placeholder="MyUserName">
+                <label asp-for="UserName">Username</label>
+                <span class="text-danger" asp-validation-for="UserName"></span>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" asp-for="FullName" placeholder="Fullname">
+                <label asp-for="FullName">Fullname</label>
+                <span class="text-danger" asp-validation-for="FullName"></span>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" asp-for="Tel" placeholder="Fullname">
+                <label asp-for="Tel">Tel</label>
+                <span class="text-danger" asp-validation-for="Tel"></span>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" asp-for="Password" placeholder="Password">
+                <label asp-for="Password">Password</label>
+                <span class="text-danger" asp-validation-for="Password"></span>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" asp-for="PasswordRepeat" placeholder="Password repeat">
+                <label asp-for="PasswordRepeat">Password repeat</label>
+                <span class="text-danger" asp-validation-for="PasswordRepeat"></span>
+            </div>
+
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2025–2030</p>
+        </form>
+    }
+    <h5 class="h5 mb-3 fw-normal mt-5">has account? <a href="/Account/Login">Click here</a> to login.</h5>
+</main>
+
+

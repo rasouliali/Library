@@ -1,0 +1,48 @@
+﻿@using Library.Application.UseCases.Borrowings.Commands.Add
+@model AddBorrowingCommand
+@{
+    ViewData["Title"] = "Add Borrowing";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+
+<main class="form-data">
+
+    @if (ViewBag.IsSuccess != null && ViewBag.IsSuccess)
+    {
+        <h5 class="h5 mb-3 fw-normal text-success">Added Successfully!</h5>
+        <h5 class="h5 mb-3 fw-normal"><a href="/Borrowing/Index">Borrowing list</a></h5>
+    }
+    else
+    {
+        <form method="post" action="/Borrowing/Create" enctype="multipart/form-data">
+            <span class="text-danger" asp-validation-summary="All"></span>
+
+            <div class="form-floating">
+                <Select type="text" class="form-control" asp-for="BookId" asp-items="ViewBag.Books" required>
+                    <option value="">Please select</option>
+                </Select>
+                <label asp-for="BookId">Borrowing Text</label>
+                <span class="text-danger" asp-validation-for="BookId"></span>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" asp-for="BorrowingFullName" placeholder="Subject">
+                <label asp-for="BorrowingFullName">Borrowing FullName</label>
+                <span class="text-danger" asp-validation-for="BorrowingFullName"></span>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" asp-for="BorrowingMobile" placeholder="Author">
+                <label asp-for="BorrowingMobile">Borrowing mobile</label>
+                <span class="text-danger" asp-validation-for="BorrowingMobile"></span>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" asp-for="BorrowingNationalCode" placeholder="PublishYear">
+                <label asp-for="BorrowingNationalCode">Borrowing NationalCode</label>
+                <span class="text-danger" asp-validation-for="BorrowingNationalCode"></span>
+            </div>
+
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Submit Data</button>
+        </form>
+    }
+</main>

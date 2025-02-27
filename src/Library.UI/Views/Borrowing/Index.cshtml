@@ -1,0 +1,57 @@
+﻿@using Library.Application.Dto
+@model List<BorrowingDto>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="row">
+    <a class="btn btn-primary" asp-action="Create">Create new book</a>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>opt</th>
+                    <th>Book name</th>
+                    <th>Book author</th>
+                    <th>Book publish year</th>
+                    <th>Borrowing fullname</th>
+                    <th>Borrowing nationalcode</th>
+                    <th>Borrowing mobile</th>
+                    <th>Register user</th>
+                    <th>Maximum return date</th>
+                    <th>Extent counter</th>
+                    <th>Return date</th>
+                    <th>Created date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    @foreach (var item in Model)
+                    {
+
+                        <tr class="@(item.IsReturn?"table-success":"table-danger")">
+                            <td>
+                                @if (item.IsReturn==false)
+                                {
+                                    <a href="/Borrowing/ReturnBook?id=@item.Id">Return</a>
+                                    <a href="/Borrowing/ExtentBook?id=@item.Id">Extent</a>
+                                }
+                            </td>
+                            <td>@item.BookTitle</td>
+                            <td>@item.BookAuthor</td>
+                            <td>@item.BookPublishYear</td>
+                            <td>@item.BorrowingFullName</td>
+                            <td>@item.BorrowingNationalCode</td>
+                            <td>@item.BorrowingMobile</td>
+                            <td>@item.CurrentUserFullname</td>
+                            <td>@item.MaximumReturnDate</td>
+                            <td>@item.ExtentCounter</td>
+                            <td>@item.ReturnDate</td>
+                            <td>@item.CreatedDate</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

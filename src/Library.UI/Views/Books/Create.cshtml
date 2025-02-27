@@ -1,0 +1,45 @@
+﻿@using Library.Application.Dto
+@model BookDto
+@{
+    ViewData["Title"] = "Add Book";
+}
+<h1>@ViewData["Title"]</h1>
+
+<main class="form-data">
+
+    @if (ViewBag.IsSuccess != null && ViewBag.IsSuccess)
+    {
+        <h5 class="h5 mb-3 fw-normal text-success">Added Successfully!</h5>
+        <h5 class="h5 mb-3 fw-normal"><a href="/Books/Index">Go to book list</a></h5>
+    }
+    else
+    {
+        <form method="post" action="/Books/Create" enctype="multipart/form-data">
+            <span class="text-danger" asp-validation-summary="All"></span>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" asp-for="Title" placeholder="Title">
+                <label asp-for="Title">Book Text</label>
+                <span class="text-danger" asp-validation-for="Title"></span>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" asp-for="Author" placeholder="Author">
+                <label asp-for="Author"></label>
+                <span class="text-danger" asp-validation-for="Author"></span>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" asp-for="PublishYear" placeholder="PublishYear">
+                <label asp-for="PublishYear">Publish Year</label>
+                <span class="text-danger" asp-validation-for="PublishYear"></span>
+            </div>
+            
+            <div class="form-floating">
+                <input type="text" class="form-control" asp-for="BookCategory" placeholder="Book Category">
+                <label asp-for="BookCategory">Book Category</label>
+                <span class="text-danger" asp-validation-for="BookCategory"></span>
+            </div>
+
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Submit Data</button>
+        </form>
+    }
+</main>

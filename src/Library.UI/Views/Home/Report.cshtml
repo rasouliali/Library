@@ -1,0 +1,68 @@
+﻿@using Library.Application.Dto
+@model ReportViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="row">
+    <h5>Borrowing books</h5>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Category</th>
+                    <th>Publish Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model!=null && Model.BorrowingBooks!=null){
+                    foreach (var item in Model.BorrowingBooks)
+                    {
+
+                        <tr>
+                            <td>@item.Title</td>
+                            <td>@item.Author</td>
+                            <td>@item.BookCategory</td>
+                            <td>@item.PublishYear</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<hr />
+<h5>Not returned books</h5>
+<div class="row">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Category</th>
+                    <th>Publish Year</th>
+                    <th>CreatedDate</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.NotReturnedBooks != null)
+                {
+                    foreach (var item in Model.NotReturnedBooks)
+                    {
+
+                        <tr>
+                            <td>@item.Title</td>
+                            <td>@item.Author</td>
+                            <td>@item.BookCategory</td>
+                            <td>@item.PublishYear</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
